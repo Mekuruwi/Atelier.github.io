@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elaine Razera Ateliê Criativo | Peças Artesanais Personalizadas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bege-claro: #F9F7F5;
+            --bege-medio: #EBE5DF;
+            --verde-salvia: #A8B5A0;
+            --verde-suave: #C5D5BC;
+            --branco: #FFFFFF;
+            --cinza-texto: #4A4A4A;
+            --cinza-claro: #8C8C8C;
+            --sombra: rgba(0, 0, 0, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--cinza-texto);
+            line-height: 1.6;
+            background-color: var(--branco);
+        }
+
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
+
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background-color: var(--verde-salvia);
+            color: var(--branco);
+            border: 2px solid var(--verde-salvia);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--verde-salvia);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--verde-salvia);
+            border: 2px solid var(--verde-salvia);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--verde-salvia);
+            color: var(--branco);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px var(--sombra);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--cinza-texto);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--cinza-texto);
+        }
+
+        nav a:hover { color: var(--verde-salvia); }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, var(--bege-claro) 0%, var(--branco) 100%);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--cinza-texto);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--cinza-claro);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px var(--sombra);
+        }
+
+        .sobre {
+            padding: 100px 0;
+            background-color: var(--branco);
+        }
+
+        .sobre-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .sobre-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px var(--sombra);
+        }
+
+        .sobre-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--cinza-texto);
+        }
+
+        .sobre-text p {
+            font-size: 1.05rem;
+            color: var(--cinza-claro);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .produtos {
+            padding: 100px 0;
+            background-color: var(--bege-claro);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--cinza-texto);
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--cinza-claro);
+        }
+
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .produto-card {
+            background: var(--branco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--sombra);
+            transition: transform 0.3s ease;
+        }
+
+        .produto-card:hover { transform: translateY(-10px); }
+
+        .produto-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .produto-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .produto-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--cinza-texto);
+        }
+
+        .como-encomendar {
+            padding: 100px 0;
+            background-color: var(--branco);
+        }
+
+        .passos-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .passo-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .passo-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--verde-suave);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--branco);
+        }
+
+        .passo-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--cinza-texto);
+        }
+
+        .passo-card p {
+            font-size: 0.95rem;
+            color: var(--cinza-claro);
+            line-height: 1.6;
+        }
+
+        .depoimentos {
+            padding: 100px 0;
+            background-color: var(--bege-claro);
+        }
+
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .depoimento-card {
+            background: var(--branco);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px var(--sombra);
+        }
+
+        .depoimento-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--cinza-texto);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .depoimento-author {
+            font-weight: 700;
+            color: var(--verde-salvia);
+            font-size: 1rem;
+        }
+
+        footer {
+            background-color: var(--cinza-texto);
+            color: var(--branco);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--branco);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--bege-medio);
+            font-size: 0.95rem;
+            line-height: 2;
+        }
+
+        .footer-section a:hover { color: var(--verde-salvia); }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--bege-medio);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cinza-texto);
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background-color: var(--verde-salvia);
+            color: var(--branco);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--bege-medio);
+            color: var(--bege-medio);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content, .sobre-content { grid-template-columns: 1fr; gap: 2rem; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .produtos-grid { grid-template-columns: repeat(2, 1fr); }
+            .passos-grid { grid-template-columns: repeat(2, 1fr); }
+            .depoimentos-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero { padding: 120px 0 60px; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .hero-image img { height: 350px; }
+            .produtos-grid, .passos-grid { grid-template-columns: 1fr; }
+            .section-title h2, .sobre-text h2 { font-size: 2.2rem; }
+            .container { padding: 0 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 { font-size: 1.8rem; }
+            .btn { padding: 0.8rem 1.5rem; font-size: 0.85rem; }
+            .header-content .btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Elaine Razera</a>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#produtos">Produtos</a></li>
+                        <li><a href="#como-encomendar">Como Encomendar</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </nav>
+                <a href="https://wa.me/5511999999999" class="btn btn-primary">Orçamento no WhatsApp</a>
+                <div class="mobile-menu-btn">☰</div>
+            </div>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Peças Artesanais Personalizadas para Mulheres e Bebês</h1>
+                    <p>Criando com carinho e praticidade desde 2016, em São Paulo.</p>
+                    <a href="https://wa.me/5511999999999" class="btn btn-primary">Solicitar Orçamento</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1605218427306-635ba2439af2?w=800&h=600&fit=crop" alt="Necessaire artesanal personalizada">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <div class="sobre-content">
+                <div class="sobre-image">
+                    <img src="https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?w=800&h=600&fit=crop" alt="Atelie de costura artesanal">
+                </div>
+                <div class="sobre-text">
+                    <h2>Nossa História</h2>
+                    <p>Desde 2016, o Elaine Razera Ateliê Criativo transforma tecidos em peças únicas, unindo funcionalidade e delicadeza em cada ponto. Nosso ateliê nasceu do amor pela costura artesanal e do desejo de criar itens que acompanham os momentos especiais da vida das mulheres e bebês.</p>
+                    <p>Cada peça é confeccionada manualmente, com atenção aos mínimos detalhes e compromisso com a qualidade. Acreditamos que o artesanato vai além da estética – é sobre criar memórias afetivas através de objetos feitos com dedicação e carinho.</p>
+                    <a href="#produtos" class="btn btn-secondary">Conheça Nossos Produtos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="produtos" class="produtos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossas Categorias</h2>
+                <p>Descubra peças feitas especialmente para você</p>
+            </div>
+            <div class="produtos-grid">
+                <div class="produto-card">
+                    <img src="https://images.unsplash.com/photo-1584986573969-ba5e5aa1ca7c?w=600&h=400&fit=crop" alt="Necessaires personalizadas">
+                    <div class="produto-info">
+                        <h3>Nécessaires</h3>
+                        <p style="color: var(--cinza-claro); margin-bottom: 1.5rem;">Práticas e elegantes para organizar seus itens com estilo</p>
+                        <a href="https://wa.me/5511999999999?text=Quero+saber+mais+sobre+necessaires" class="btn btn-secondary">Solicitar Detalhes</a>
+                    </div>
+                </div>
+                <div class="produto-card">
+                    <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=600&h=400&fit=crop" alt="Itens para bebes artesanais">
+                    <div class="produto-info">
+                        <h3>Itens para Bebês</h3>
+                        <p style="color: var(--cinza-claro); margin-bottom: 1.5rem;">Conforto e segurança para os pequenos com muito amor</p>
+                        <a href="https://wa.me/5511999999999?text=Quero+saber+mais+sobre+itens+para+bebes" class="btn btn-secondary">Solicitar Detalhes</a>
+                    </div>
+                </div>
+                <div class="produto-card">
+                    <img src="https://images.unsplash.com/photo-1605218457223-2345a5fc8205?w=600&h=400&fit=crop" alt="Pecas personalizadas artesanais">
+                    <div class="produto-info">
+                        <h3>Peças Personalizadas</h3>
+                        <p style="color: var(--cinza-claro); margin-bottom: 1.5rem;">Crie algo único do seu jeito, totalmente customizado</p>
+                        <a href="https://wa.me/5511999999999?text=Quero+saber+mais+sobre+pecas+personalizadas" class="btn btn-secondary">Solicitar Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="como-encomendar" class="como-encomendar">
+        <div class="container">
+            <div class="section-title">
+                <h2>Como Encomendar</h2>
+                <p>É simples ter sua peça artesanal exclusiva</p>
+            </div>
+            <div class="passos-grid">
+                <div class="passo-card">
+                    <div class="passo-icon">🎨</div>
+                    <h3>1. Escolha</h3>
+                    <p>Selecione a categoria e modelo que mais combina com você</p>
+                </div>
+                <div class="passo-card">
+                    <div class="passo-icon">✨</div>
+                    <h3>2. Personalize</h3>
+                    <p>Defina cores, tecidos e detalhes exclusivos da sua peça</p>
+                </div>
+                <div class="passo-card">
+                    <div class="passo-icon">💬</div>
+                    <h3>3. Orçamento</h3>
+                    <p>Receba um orçamento personalizado via WhatsApp</p>
+                </div>
+                <div class="passo-card">
+                    <div class="passo-icon">📦</div>
+                    <h3>4. Envio</h3>
+                    <p>Sua peça é confeccionada e enviada com todo cuidado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="depoimentos" class="depoimentos">
+        <div class="container">
+            <div class="section-title">
+                <h2>O Que Dizem Nossas Clientes</h2>
+                <p>Histórias reais de quem já conhece nosso trabalho</p>
+            </div>
+            <div class="depoimentos-grid">
+                <div class="depoimento-card">
+                    <p class="depoimento-text">"A nécessaire que encomendei superou todas as expectativas! O acabamento é impecável e os detalhes personalizados tornaram a peça ainda mais especial. Recomendo de olhos fechados!"</p>
+                    <p class="depoimento-author">— Mariana Santos</p>
+                </div>
+                <div class="depoimento-card">
+                    <p class="depoimento-text">"Comprei um kit bebê para presente e foi sucesso total! A qualidade do tecido e o carinho em cada ponto são visíveis. Com certeza voltarei a encomendar."</p>
+                    <p class="depoimento-author">— Fernanda Oliveira</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Elaine Razera</h3>
+                    <p>Peças artesanais feitas com amor e dedicação para tornar seus momentos ainda mais especiais.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/elainerazeraateli" aria-label="Instagram">📷</a>
+                        <a href="https://wa.me/5511999999999" aria-label="WhatsApp">💬</a>
+                        <a href="mailto:contato@elainerazera.com.br" aria-label="Email">✉️</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <p><a href="#inicio">Início</a></p>
+                    <p><a href="#sobre">Sobre</a></p>
+                    <p><a href="#produtos">Produtos</a></p>
+                    <p><a href="#como-encomendar">Como Encomendar</a></p>
+                    <p><a href="#depoimentos">Depoimentos</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>📍 São Paulo, SP</p>
+                    <p>📱 (11) 99999-9999</p>
+                    <p>✉️ contato@elainerazera.com.br</p>
+                    <p>⏰ Seg - Sex: 9h às 18h</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Elaine Razera Ateliê Criativo. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navUl = document.querySelector('nav ul');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            if (navUl.style.display === 'flex') {
+                navUl.style.display = 'none';
+            } else {
+                navUl.style.display = 'flex';
+                navUl.style.flexDirection = 'column';
+                navUl.style.position = 'absolute';
+                navUl.style.top = '100%';
+                navUl.style.left = '0';
+                navUl.style.width = '100%';
+                navUl.style.background = 'white';
+                navUl.style.padding = '1rem';
+                navUl.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navUl.style.display = 'none';
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.08)';
+            }
+        });
+    </script>
+</body>
+</html>
